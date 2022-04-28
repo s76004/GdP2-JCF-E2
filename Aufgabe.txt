@@ -1,0 +1,89 @@
+Einsendeaufgabe JCF-E2
+Eigene ArrayList-Klasse
+Lernziel:
+
+Verstehen, wie einige Methoden der Klasse ArrayList<E> implementiert sind
+Wiederholung des Umgangs mit Reihungen
+Bessere Einschätzung bei der Wahl zwischen Arrays und ArrayList<E>
+Erstellen Sie eine Klasse MeineArrayList<E>, mit der Sie die grundlegende Funktionalität einer ArrayList nachbilden. Es genügt, wenn Ihre Klasse folgende Methoden bereitstellt:
+
+Hinzufügen von Elementen
+Löschen von Elementen
+Löschen aller Elemente
+Ausgeben der Anzahl der enthaltenen Elemente
+Methode toString überschreiben
+Dem Konstruktor der Klasse soll die Anfangskapazität übergeben werden können. Selbstverständlich ändert sich die Größe Ihrer ArrayList bei Bedarf automatisch. 
+
+Hinweis: Bei der Vergrößerung des Arrays können Sie auf die Methode System.arrayCopy(...) oder java.util.Arrays.copyOf(...) zurückgreifen. Bei der Implementierung der Methode toString können Sie ebenfalls auf java.util.Arrays.toString(...) zurückgreifen.
+
+Zur Erleichterung ist der Beginn der Klasse MeineArrayList<E> vorgegeben.
+
+Quellcode
+Quellcode
+Beginn der Klasse MeineArrayList<E>
+001
+002
+003
+004
+005
+006
+007
+008
+009
+010
+011
+012
+013
+014
+015
+016
+017
+018
+019
+020
+021
+022
+023
+024
+025
+026
+027
+/**
+ * a very simplified version of java.util.ArrayList<E>
+ *
+ * @param <E>
+ */
+
+public class MeineArrayList<E> {
+     private E[] list;
+     private int size;
+     private int capacity;
+     private int increment;
+    
+/**
+ * constructs a MeineArrayList-Object with initial capacity c
+ * and increment inc
+ * @param c the initial capacity
+ * @param inc the number of positions that will be added
+ * when the list is made bigger
+ */
+    public MeineArrayList(int c, int inc) {
+        capacity = c;
+        list = (E[]) new Object[c];
+        size = 0;
+        increment = inc;
+    }
+
+...
+MeineArrayList.java (1 KB)
+
+Erstellen Sie selbst eine JUnit-Klasse, um Ihre Klasse zu testen.
+
+Einsenden
+An die Mentoren der Hochschule, an der Sie eingeschrieben sind, senden Sie bitte folgende Dateien:
+
+die Quelldatei MeineArrayList.java
+die übersetzte Datei MeineArrayList.class
+die Quelldatei MeineArrayListTest.java
+die übersetzte Datei MeineArrayListTest.class
+Weitere Informationen, insbesondere den Abgabetermin, entnehmen Sie den Ankündigungen im Lernraumsystem.
