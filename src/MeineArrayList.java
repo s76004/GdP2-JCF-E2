@@ -78,23 +78,24 @@ public class MeineArrayList<E> {
      * @param e das zu entfernende Element
      */
     public void remove(E e) {
-        // Iteration über das Array
-        // Wenn das abgerufene Element gleich e ist, so werden die nachfolgenden Indexpositionen
-        // um eine Stelle "nach links" gerückt.
-        for(int i = 0; i < this.size; i++) {
-            if(this.get(i).equals(e)) {
-                for(int j = i; j < this.size-1; i++) {
-                    this.list[j] = this.list[i];
+        if (this.size > 0) {
+            // Iteration über das Array
+            // Wenn das abgerufene Element gleich e ist, so werden die nachfolgenden Indexpositionen
+            // um eine Stelle "nach links" gerückt.
+            for (int i = 0; i < this.size; i++) {
+                if (this.get(i).equals(e)) {
+                    for (int j = i; j < this.size-1; i++) {
+                        this.list[j] = this.list[i];
+                    }
+                    // Die letzte Stelle wird gelöscht.
+                    this.list[size-1] = null;
                 }
-                // Die letzte Stelle wird gelöscht.
-                this.list[size] = null;
             }
+            // size anpassen
+            this.size--;
+            // Wird der Inhalte der MeineArrayList um mehr als increment verkleinert,
+            // so wird das interne Array ausgetauscht
         }
-        // size anpassen
-        this.size--;
-
-        // Wird der Inhalte der MeineArrayList um mehr als increment verkleinert,
-        // so wird das interne Array ausgetauscht
         if (this.size < (this.capacity - increment)) {
             E[] newList = (E[]) new Object[this.capacity - increment];
             for (int i = this.size; i < this.size; i++) {
