@@ -10,7 +10,6 @@ public class MeineArrayListTest {
     public void getsizeMyArrayList() {
         MeineArrayList ml = new MeineArrayList(10, 3);
         assertEquals(0, ml.getSize(),"Size wrong");
-
     }
     @Test
     public void getcapacityMyArrayList() {
@@ -48,32 +47,43 @@ public class MeineArrayListTest {
     @Test
     public void testadd() {
         System.out.println("\ntestadd()");
-        testList.add("Maria");
-        testList.add("Joseph");
-        testList.add("Jesus");
-        testList.add("Eva");
-        assertEquals(4, testList.getSize());
-        assertEquals(13, testList.getCapacity());
-        System.out.println("Inhalt des Arrays: " + testList.toString());
-        System.out.println("Anzahl der Array-Elemente:\t\tSoll = 4\tIst = " + testList.getSize());
-        System.out.println("Array-Groesse:\t\t\t\tSoll = 13\tIst = " + testList.getCapacity());      
+        MeineArrayList addTestList = new MeineArrayList<>(10, 2);
+        addTestList.add("Maria");
+        addTestList.add("Joseph");
+        addTestList.add("Jesus");
+        addTestList.add("Eva");
+        assertEquals(4, addTestList.getSize());
+        assertEquals(10, addTestList.getCapacity());
+        log("Inhalt des Arrays: " + addTestList);
+        log("Anzahl der Array-Elemente:\t\tSoll = 4\tIst = " + addTestList.getSize());
+        log("Array-Groesse:\t\t\t\tSoll = 13\tIst = " + addTestList.getCapacity());
     }
 
     @Test
     public void testRemove() {
-        System.out.println("\ntestRemoveEntry()");
-        testList.add("Maria");
-        testList.add("Joseph");
-        testList.add("Jesus");
-        testList.add("Eva");
-        testList.add("Judas");
-        System.out.println("Anzahl der Array-Elemente vor dem Loeschen: " + testList.getSize());
-        System.out.println("Inhalt des Arrays vor dem Loeschen: " + testList.toString());
-        System.out.println("Geloescht wird Element 3."); 
-        testList.remove(3);
-        assertEquals(4, testList.getSize());
-        System.out.println("Anzahl der Array-Elemente nach dem Loeschen: " + testList.getSize());
-        System.out.println("Inhalt des Arrays nach dem Loeschen: " + testList.toString());
+        log("\ntestRemoveEntry()");
+        MeineArrayList removeTestList = new MeineArrayList<>(10, 2);
+        String Maria = "Maria";
+        String Joseph = "Joseph";
+        String Jesus = "Jesus";
+        String Eva = "Eva";
+        String Judas = "Judas";
+
+        removeTestList.add(Maria);
+        removeTestList.add(Joseph);
+        removeTestList.add(Jesus);
+        removeTestList.add(Eva);
+        removeTestList.add(Judas);
+
+        log(removeTestList);
+
+        log("Anzahl der Array-Elemente vor dem Loeschen: " + removeTestList.getSize());
+        log("Inhalt des Arrays vor dem Loeschen: " + removeTestList);
+        log("Geloescht wird Element 'Maria'.");
+        removeTestList.remove(Maria);
+        assertEquals(4, removeTestList.getSize());
+        System.out.println("Anzahl der Array-Elemente nach dem Loeschen: " + removeTestList.getSize());
+        System.out.println("Inhalt des Arrays nach dem Loeschen: " + removeTestList);
     }
 
     @Test
