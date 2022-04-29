@@ -58,7 +58,6 @@ public class MeineArrayList<E> {
         // Check ob die MeineArrayList voll ist.
         // Ist sie voll, wird das interne Array gegen ein neues ersetzt,
         // welches um increment größer ist als das alte Array
-        // TODO: Prüfung ob das Element bereits in der MeineArrayList ist - dann spart man die Prüfung bei remove()
         if(this.size == this.capacity) {
             E[] newList = (E[]) new Object[this.capacity + this.increment];
             // Befüllen des neuen Arrays
@@ -81,13 +80,13 @@ public class MeineArrayList<E> {
         if (this.size > 0) {
             // Iteration über das Array
             // Wenn das abgerufene Element gleich e ist, so werden die nachfolgenden Indexpositionen
-            // um eine Stelle "nach links" gerückt.
+            // bis einschl. des vorletzten Elements um eine Stelle "nach links" gerückt.
             for (int i = 0; i < this.size; i++) {
-                if (this.get(i).equals(e)) {
-                    for (int j = i; j < this.size-1; i++) {
-                        this.list[j] = this.list[i];
+                if(this.list[i].equals(e)) {
+                    for(int j = i; i < this.size-1; i++) {
+                        this.list[i] = this.list[i+1];
                     }
-                    // Die letzte Stelle wird gelöscht.
+                    // das letzte Element des Arrays wird 'manuell' gelöscht
                     this.list[size-1] = null;
                 }
             }
@@ -95,14 +94,6 @@ public class MeineArrayList<E> {
             this.size--;
             // Wird der Inhalte der MeineArrayList um mehr als increment verkleinert,
             // so wird das interne Array ausgetauscht
-        }
-        if (this.size < (this.capacity - increment)) {
-            E[] newList = (E[]) new Object[this.capacity - increment];
-            for (int i = this.size; i < this.size; i++) {
-                newList[i] = this.list[i];
-            }
-            this.list = newList;
-            this.capacity = newList.length;
         }
     }
 
@@ -124,7 +115,7 @@ public class MeineArrayList<E> {
         StringBuilder returnString = new StringBuilder();
         for(int i = 0; i < this.size; i++) {
             if (this.list[i] != null) {
-                returnString.append(this.list[i].toString());
+                returnString.append(this.list[i].toString()).append(", ");
             }
         }
         return returnString.toString();
