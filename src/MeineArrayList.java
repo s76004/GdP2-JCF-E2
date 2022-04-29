@@ -123,7 +123,9 @@ public class MeineArrayList<E> {
     public String toString() {
         StringBuilder returnString = new StringBuilder();
         for(int i = 0; i < this.size; i++) {
-            returnString.append(this.list[i].toString());
+            if (this.list[i] != null) {
+                returnString.append(this.list[i].toString());
+            }
         }
         return returnString.toString();
     }
