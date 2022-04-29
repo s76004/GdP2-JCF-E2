@@ -1,4 +1,10 @@
 /**
+ * Klasse für MeineArrayList.
+ * @author Kevin Kurt (s76004@bht-berlin.de), Jan Zimmermann (s79873@bht-berlin.de), Alexander Mavrin (s53615@bht-berlin.de)
+ * @version 1.0
+ */
+
+/**
  * a very simplified version of java.util.ArrayList
  *
  * @param <E>
