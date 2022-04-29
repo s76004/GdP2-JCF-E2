@@ -1,4 +1,4 @@
-public class MeineArrayListTester {
+public class MeineArrayListTest {
     public static void main(String[] args) {
         String a = "Hallo";
         String b = "Welt";
