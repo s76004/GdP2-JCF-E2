@@ -114,5 +114,12 @@ public class MeineArrayList<E> {
         this.size = 0;
     }
 
+    public String toString() {
+        StringBuilder returnString = new StringBuilder();
+        for(int i = 0; i < this.size; i++) {
+            returnString.append(this.list[i].toString());
+        }
+        return returnString.toString();
+    }
 
 }
