@@ -60,6 +60,22 @@ public class MeineArrayListTest {
     }
 
     @Test
+    public void testAddResize() {
+        System.out.println("\ntestadd()");
+        MeineArrayList addTestList = new MeineArrayList<>(2, 2);
+        addTestList.add("Maria");
+        addTestList.add("Joseph");
+        assertEquals(2, addTestList.getSize());
+        assertEquals(2, addTestList.getCapacity());
+        addTestList.add("Jesus");
+        assertEquals(3, addTestList.getSize());
+        assertEquals(4, addTestList.getCapacity());
+        log("Inhalt des Arrays: " + addTestList);
+        log("Anzahl der Array-Elemente:\t\tSoll = 3\tIst = " + addTestList.getSize());
+        log("Array-Groesse:\t\t\t\tSoll = 4\tIst = " + addTestList.getCapacity());
+    }
+
+    @Test
     public void testRemove() {
         log("\ntestRemoveEntry()");
         MeineArrayList removeTestList = new MeineArrayList<>(10, 2);
