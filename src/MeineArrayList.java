@@ -102,7 +102,7 @@ public class MeineArrayList<E> {
      * Alle Inhalte werden gelöscht und die Größe der MeineArrayList auf increment zurückgesetzt.
      */
     public void removeAll() {
-        this.list = (E[]) new Object[increment];
+        this.list = (E[]) new Object[capacity];
         this.size = 0;
     }
 
