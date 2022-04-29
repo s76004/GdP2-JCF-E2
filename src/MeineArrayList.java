@@ -114,6 +114,11 @@ public class MeineArrayList<E> {
         this.size = 0;
     }
 
+    /**
+     * Methode um eine MeineArrayList als String auszugeben.
+     * @return die MeineArrayList als String
+     */
+    @Override
     public String toString() {
         StringBuilder returnString = new StringBuilder();
         for(int i = 0; i < this.size; i++) {
