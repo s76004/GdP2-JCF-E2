@@ -21,9 +21,9 @@ public class MeineArrayListTester {
     }
 
     /**
-     * Helper method to make logging a bit easier.
+     * Helper Methode um Logging zu vereinfachen.
      *
-     * @param output One of multiple objects to print out.
+     * @param output eines oder mehrere Objekte die ausgegeben werden sollen.
      */
     public static void log(Object... output) {
         StringBuilder logString = new StringBuilder();
