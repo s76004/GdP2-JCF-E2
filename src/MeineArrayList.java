@@ -25,30 +25,94 @@ public class MeineArrayList<E> {
         increment = inc;
     }
 
+    /**
+     * Methode um die aktuelle verwendete Kapazität der MeineArrayList zu erhalten.
+     * @return die verwendete Kapazität der MyArrayList
+     */
     public int getSize() {
         return size;
     }
 
-    public void add(E e) {
-        if(this.size >= this.capacity) {
-            resize();
-        }
-        list[size] = e;
+    /**
+     * Methode um die aktuelle Kapazität der MeineArrayList zu erhalten.
+     * @return die Kapazität der MyArrayList
+     */
+    public int getCapacity() {
+        return capacity;
     }
 
-    public void remove(E e) {
-    }
-
+    /**
+     * Methode um das an Index i gespeicherte Objekt abzurufen.
+     * @param i der Index des Objektes
+     * @return das Objekt
+     */
     public Object get(int i) {
         return list[i];
     }
 
-    private void resize() {
-        E[] newList = (E[]) new Object[this.capacity + this.increment];
-        for(int i = 0; i < this.size; i++) {
-            newList[i] = (E) this.get(i);
+    /**
+     * Methode um ein Element zur MeineArrayList hinzuzufügen.
+     * @param e das Element welches hinzugefügt werden soll
+     */
+    public void add(E e) {
+        // Check ob die MeineArrayList voll ist.
+        // Ist sie voll, wird das interne Array gegen ein neues ersetzt,
+        // welches um increment größer ist als das alte Array
+        // TODO: Prüfung ob das Element bereits in der MeineArrayList ist - dann spart man die Prüfung bei remove()
+        if(this.size == this.capacity) {
+            E[] newList = (E[]) new Object[this.capacity + this.increment];
+            // Befüllen des neuen Arrays
+            for(int i = 0; i < this.size; i++) {
+                newList[i] = (E) this.get(i);
+            }
+            this.list = newList;
+            this.capacity = newList.length;
         }
-        this.list = newList;
-        this.capacity = newList.length;
+        // Das neue Element hinzufügen und size anpassen
+        this.list[size] = e;
+        this.size++;
     }
+
+    /**
+     * Methode um ein Element aus der MeineArrayList zu entfernen.
+     * @param e das zu entfernende Element
+     */
+    public void remove(E e) {
+        // Iteration über das Array
+        // Wenn das abgerufene Element gleich e ist, so werden die nachfolgenden Indexpositionen
+        // um eine Stelle "nach links" gerückt.
+        for(int i = 0; i < this.size; i++) {
+            if(this.get(i).equals(e)) {
+                for(int j = i; j < this.size-1; i++) {
+                    this.list[j] = this.list[i];
+                }
+                // Die letzte Stelle wird gelöscht.
+                this.list[size] = null;
+            }
+        }
+        // size anpassen
+        this.size--;
+
+        // Wird der Inhalte der MeineArrayList um mehr als increment verkleinert,
+        // so wird das interne Array ausgetauscht
+        if (this.size < (this.capacity - increment)) {
+            E[] newList = (E[]) new Object[this.capacity - increment];
+            for (int i = this.size; i < this.size; i++) {
+                newList[i] = this.list[i];
+            }
+            this.list = newList;
+            this.capacity = newList.length;
+        }
+    }
+
+    /**
+     * Methode um alle Elemente der MeineArrayList zu löschen.
+     * Alle Inhalte werden gelöscht und die Größe der MeineArrayList auf increment zurückgesetzt.
+     */
+    public void removeAll() {
+        this.list = (E[]) new Object[increment];
+        this.size = 0;
+    }
+
+
 }
